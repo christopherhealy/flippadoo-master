@@ -36,9 +36,12 @@ function getLocation() {
             timeout: 5000,
             enableHighAccuracy: true
         };
+        
         //get the current location
         navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
-        //Clear the current location while we wait for a reading
+    //Clear the current location while we wait for a reading
+        localStorage.setItem("APIKey", "666777888");
+        alert("The API value is: " +localStorage.getItem("APIKey");
         
 
 }
@@ -78,7 +81,7 @@ function onLocationSuccess(loc) {
     //Then replace the page's content with the current
     // location retrieved from the API
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
-    var gpsAltitude = loc.coords.altitude + ': accuracy' + loc.coords.altitudeAccuracy;
+    var gpsAltitude = 'Altitude: ' + loc.coords.altitude + ': accuracy' + loc.coords.altitudeAccuracy;
     var CurDateTime = d.toLocaleString();
     var HTMLStr = 'Altitude\n: ' + loc.coords.altitude + 'Accuracy\n: ' + loc.coords.accuracy + 'Altitude Accuracy\n: '
         + loc.coords.altitudeAccuracy + 'Heading\n: ' + loc.coords.heading + 'Speed\n: '
