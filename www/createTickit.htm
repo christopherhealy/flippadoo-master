@@ -29,23 +29,6 @@ function loadPage(url) {
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-function GetLocationForm() {
-    alert("Redirect to the form");
-    loadPage('GetLocation.html');
-}
-
-function getSimpleLocation() {
-
-    var locOptions = {
-        timeout: 5000,
-        enableHighAccuracy: true
-    };
-    //get the current location
-    navigator.geolocation.getCurrentPosition(onLocationSimple, onLocationError, locOptions);
-    //Clear the current location while we wait for a reading
-
-
-}
 
 function getLocation() {
            
@@ -60,6 +43,32 @@ function getLocation() {
 
 }
 
+function CreateFormTop() {
+    var TickitForm ='<div id="container">';
+    TickitForm = TickitForm + '<div class="wrapper">  '; 
+    TickitForm = TickitForm + '<div class="formContainer">';
+    TickitForm = TickitForm + '<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ';            
+    TickitForm = TickitForm + '<input name="ownerId" value="1" type="hidden">';
+    TickitForm = TickitForm + '<input name="apiKey" id="apiKey" value="355901361" type="hidden">';
+    TickitForm = TickitForm + '<input name="ip" value="http://192.168.1.240:8080" type="hidden">     ';          
+    TickitForm = TickitForm + '<input name="tickitStatus" value="1" type="hidden">';
+    TickitForm = TickitForm + '<input name="tickitType" value="11" type="hidden">   ';            
+    TickitForm = TickitForm + '<input value="ChrisHealy@test.com" name="recipient" type="text">';
+    TickitForm = TickitForm + '<input value="Whami Location" name="subject" type="text">';
+    TickitForm = TickitForm + '<input value="" id="idStartDate" name="startDate" type="text">';
+    TickitForm = TickitForm + '<input value="" name="endDate" type="hidden">';    
+    document.write(TickitForm);
+}
+
+function CreateFormBottom() {
+    var TickitForm = '';
+    TickitForm = TickitForm + '<input value="" name="tickitFile" type="hidden"> ';
+    TickitForm = TickitForm + '<div class="buttonBlock"> ';
+    TickitForm = TickitForm + '<button onclick="creatTickitFn();">Whami</button> ';
+    TickitForm = TickitForm + '<input type="button" value="Location" onclick="getLocation();"> ';
+    TickitForm = TickitForm + '</div> </form></div></div></div>';
+    document.write(TickitForm);
+}
 function onLocationSuccess(loc) {
     
     //alert("onLocationSuccess");    
@@ -69,12 +78,12 @@ function onLocationSuccess(loc) {
     //Then replace the page's content with the current
     // location retrieved from the API
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
-    var HTMLStr = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
-    alert("HTML String is: " + HTMLStr);
-    window.localStorage.setItem("GPSData", HTMLStr);
-    window.localStorage.setItem("GPSKey", gpsLocation);
-    alert("GPS short String is: " + gpsLocation);
-    document.write('Here it is <br><input value="' + gpsLocation + '" name="gps" type="text">');                                  
+    var HTMLStr = 'Current Location\nLatitude: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
+    
+    CreateFormTop();
+    document.write('<input value="' + gpsLocation + '" name="gps" type="text">');
+    document.write('<input value="' + HTMLstr + '" name="msgBody" type="text">');
+    CreateFormBottom();
    
 }
 
@@ -87,37 +96,7 @@ function onLocationError(e) {
 </head>
 
 <body onload="getLocation();">
-    <div id='container'>
-    <div class="wrapper">    
-        <div class="formContainer">
-        <form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">              
-                    <input name="ownerId" value="1" type="hidden">
-  		            <input name="apiKey" id="apiKey" value="355901361" type="hidden">
-                    <input name="ip" value="http://192.168.1.240:8080" type="hidden">               
-                    <input name="tickitStatus" value="1" type="hidden">
-                    <input name="tickitType" value="11" type="hidden">               
-                    <input value="ChrisHealy@test.com" name="recipient" type="text">
-                    <input value="Whami Location" name="subject" type="text">
-                    <input value="" id="idStartDate" name="startDate" type="text">
-                    <input value="" name="endDate" type="hidden">
-                    <script type="text/javascript">
-                        var GPSData = window.localStorage.getItem("GpsData");
-                        document.write('<input value="' + GPSData + '" name="msgBody" type="text">');
-                    </script>
-                    <script type="text/javascript">
-                        var GPSvalue = window.localStorage.getItem("GpsKey");
-                        //document.write('<input value="' + GPSvalue + '" name="gps" type="text">');
-                    </script>                    
-                    <input value="" name="tickitFile" type="hidden">
-          
-             <div class="buttonBlock">
-                <button onclick="creatTickitFn();">Whami</button>
-                <input type="button" value="Location" onclick="getLocation();">
-            </div>                  
-    </form>
-         
-     </div>  
-    </div>  
-  </div>
+   <!-- the form will load here -->
+     
 </body>
 </html>
