@@ -82,17 +82,17 @@ function onLocationSuccess(loc) {
     
     document.write('<br><h1>Tickit Form 3 </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
-    document.write('Owner ID:   <input name="ownerId" value="1" type="text"><br>');
+    document.write('Owner ID:      <input name="ownerId" value="1" type="text"><br>');
     document.write('<input name="apiKey" id="apiKey" value="355901361" type="hidden">');
     document.write('<input name="ip" value="http://192.168.1.240:8080" type="hidden">    ');
     document.write('<input name="tickitStatus" value="1" type="hidden">');
     document.write('<input name="tickitType" value="11" type="hidden">   ');
-    document.write('Recipient: <input value="ChrisHealy@test.com" name="recipient" type="text"><br>');
-    document.write('Subject:   <input value="Whami Location" name="subject" type="text"><br>');
-    document.write('Start:     <input value="" id="idStartDate" name="startDate" type="text"><br>');
+    document.write('Recipient:     <input value="ChrisHealy@test.com" name="recipient" type="text"><br>');
+    document.write('Subject:       <input value="Whami Location" name="subject" type="text"><br>');
+    document.write('Start:         <input value="" id="idStartDate" name="startDate" type="text"><br>');
     document.write('<input value="" name="endDate" type="hidden">');
-    document.write('GPS:       <input value="' + 'gpsLocation' + '" name="gps" type="text"><br>');
-    document.write('<input value="' + 'HTMLstr' + '" name="msgBody" type="hidden">');
+    document.write('GPS:           <input value="' + gpsLocation + '" name="gps" type="text"><br>');
+    document.write('<input value="' + HTMLstr + '" name="msgBody" type="hidden">');
     document.write('<input value="" name="tickitFile" type="hidden">');
     document.write('<div> <br><br>');
     document.write('<button onclick="creatTickitFn();">Whami</button> ');
