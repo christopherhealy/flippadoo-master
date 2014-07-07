@@ -86,23 +86,25 @@ function onLocationSuccess(loc) {
     var HTMLStr = 'Altitude\n: ' + loc.coords.altitude + 'Accuracy\n: ' + loc.coords.accuracy + 'Altitude Accuracy\n: '
         + loc.coords.altitudeAccuracy + 'Heading\n: ' + loc.coords.heading + 'Speed\n: '
         + loc.coords.speed + 'Timestamp\n: ' + d.toLocaleString();
+
+    alert("The IP Address is: " + localStorage.getItem("IP_Addr"));
     
     document.write('<br><h1>Tickit Form 3 </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
-    document.write('Owner ID:      <input name="ownerId" value="1" type="text"><br>');
-    document.write('<input name="apiKey" id="apiKey" value="355901361" type="hidden">');
+    document.write('Owner ID:      <input name="ownerId" value="1" type="hidden">');
+    document.write('<input name="apiKey" id="apiKey" value="333234567" type="hidden">');
     document.write('<input name="ip" value="http://192.168.1.240:8080" type="hidden">    ');
     document.write('<input name="tickitStatus" value="1" type="hidden">');
     document.write('<input name="tickitType" value="11" type="hidden">   ');
-    document.write('Recipient:     <input value="ChrisHealy@test.com" name="recipient" type="text"><br>');
-    document.write('Subject:       <input value="Whami Location" name="subject" type="text"><br>');
+    document.write('Recipient:     <input value="ChrisHealy@test.com" name="recipient" type="hidden">');
+    document.write('Subject:       <input value="Whami Location" name="subject" type="hidden">');
     document.write('Start:         <input value="" name="startDate" type="hidden">');
     document.write('<input value="" name="endDate" type="hidden">');
-    document.write('GPS:           <input value="' + gpsLocation + '" name="gps" type="text"><br>');
-    document.write('<input value="' + gpsAltitude + '" name="msgBody" type="text">');
+    document.write('GPS:           <input value="' + gpsLocation + '" name="gps" type="hidden"><br>');
+    document.write('<input value="' + gpsAltitude + '" name="msgBody" type="hidden">');
     document.write('<input value="" name="tickitFile" type="hidden">');
     document.write('<div> <br><br>');
-    document.write('<button onclick="creatTickitFn();">Share</button> ');
+    document.write('<button id="submitbutton" onclick="creatTickitFn();">Share</button> ');
     //document.write('<input type="button" value="Location" onclick="getLocation();">');
     document.write('</div> </form></div>');
    
@@ -118,6 +120,7 @@ function onLocationError(e) {
 
 <body onload="getLocation();">
    <!-- the form will load here -->
-     alert("The API value is: " +localStorage.getItem("APIKey"));
+
+     
 </body>
 </html>
