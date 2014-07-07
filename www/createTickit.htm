@@ -34,6 +34,19 @@ function GetLocationForm() {
     loadPage('GetLocation.html');
 }
 
+function getSimpleLocation() {
+
+    var locOptions = {
+        timeout: 5000,
+        enableHighAccuracy: true
+    };
+    //get the current location
+    navigator.geolocation.getCurrentPosition(onLocationSimple, onLocationError, locOptions);
+    //Clear the current location while we wait for a reading
+
+
+}
+
 function getLocation() {
            
         var locOptions = {
@@ -59,7 +72,7 @@ function onLocationSuccess(loc) {
     var HTMLStr = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
     alert("HTML String is: " + HTMLStr);
     window.sessionStorage.setItem("gpsLocation", gpsLocation);
-    var s = container.getElementById(idStartDate);
+    var s = document.getElementById(idStartDate);
     s.value = d.toLocaleString();
     alert("Location is" + gpsLocation);
 }
@@ -89,7 +102,7 @@ function onLocationError(e) {
                     <input value="Location" name="msgBody" type="hidden">
                     <script type="text/javascript">
                         var GPSvalue = window.localStorage.getItem("GpsKey");
-                        document.write('<input value="' + GPSvalue + '" id="MyGPSKey" name="gps" type="text">');
+                        document.write('<input value="' + GPSvalue + '" name="gps" type="text">');
                     </script>
                     
                     <input value="" name="tickitFile" type="hidden">
