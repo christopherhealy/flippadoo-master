@@ -80,7 +80,7 @@ function onLocationSuccess(loc) {
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
     var HTMLStr = 'Current Location\nLatitude: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
     
-    document.write('<br><h1>Tickit Form </h1><br><div id="container">');
+    document.write('<br><h1>Tickit Form 2 </h1><br><div id="container">');
     document.write('<div class="wrapper">  ');
     document.write('<div class="formContainer">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
