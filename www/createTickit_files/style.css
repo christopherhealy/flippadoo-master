@@ -11,7 +11,7 @@ blockquote:before, blockquote:after, q:before, q:after {content: '';content: non
 table {border-collapse: collapse;border-spacing: 0;}
 .clr{clear:both}
 body {font-family: 'Open Sans', sans-serif; color: #000}
-.wrapper{width: 900px; margin: 0 auto;}
+.wrapper{width: 300px; margin: 0 auto;}
 
 .formContainer{width: 200px; margin: 30px auto; padding: 0 20px; background: #f1f1eb; border: 1px solid #0071BC; color: #0071BC; font-size: 15px; -moz-box-shadow:   0 0 10px 0 rgba(0,0,0,0.28); box-shadow:  0 0 10px 0 rgba(0,0,0,0.28); -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 5px;}
 .formContainer .header, .formContainer .buttonBlock{background:url(../img/blue_bg.png) repeat-x; height: 65px; margin: 0 -20px;}

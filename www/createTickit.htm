@@ -14,7 +14,12 @@ function creatTickitFn(){
  	$("#createTickit").attr("action",url);
 	$("#createTickit").submit();
 }
+
+function GetLocationForm() {
+    alert("Redirect to the form");
+}
 </script>
+    
 </head>
 
 <body>
@@ -35,9 +40,10 @@ function creatTickitFn(){
                     <input value="" name="tickitFile" type="hidden">
           
              <div class="buttonBlock">
-                <button class="submitBTN" onclick="creatTickitFn();">Whami</button>
+                <button onclick="creatTickitFn();">Whami</button>
             </div>                  
     </form>
+         <button name="Location" onclick="GetLocationForm();">Location</button>
      </div>  
     </div>  
 </body>
