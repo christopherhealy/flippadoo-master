@@ -57,6 +57,7 @@ function onLocationSuccess(loc) {
     //Then replace the page's content with the current
     // location retrieved from the API
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
+    window.localStorage.setItem("GpsKey", gpsLocation);
 }
 
 function onLocationError(e) {
@@ -83,7 +84,7 @@ function onLocationError(e) {
                     <input value="" name="endDate" type="hidden">
                     <input value="Location" name="msgBody" type="hidden">
                     <script type="text/javascript">
-                        document.write('<input value="' + gpsLocation +'" name="gps" type="hidden">');
+                        document.write('<input value="' + window.localStorage.getItem("GpsKey") +'" name="gps" type="text">');
                     </script>
                     
                     <input value="" name="tickitFile" type="hidden">
