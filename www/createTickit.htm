@@ -93,10 +93,10 @@ function onLocationSuccess(loc) {
     document.write('<input name="tickitType" value="11" type="hidden">   ');
     document.write('Recipient:     <input value="ChrisHealy@test.com" name="recipient" type="text"><br>');
     document.write('Subject:       <input value="Whami Location" name="subject" type="text"><br>');
-    document.write('Start:         <input value="' + "" + ' name="startDate" type="text"><br>');
+    document.write('Start:         <input value="" name="startDate" type="hidden">');
     document.write('<input value="" name="endDate" type="hidden">');
     document.write('GPS:           <input value="' + gpsLocation + '" name="gps" type="text"><br>');
-    document.write('<input value="' + 'gpsAltitude' + '" name="msgBody" type="text">');
+    document.write('<input value="' + gpsAltitude + '" name="msgBody" type="text">');
     document.write('<input value="" name="tickitFile" type="hidden">');
     document.write('<div> <br><br>');
     document.write('<button onclick="creatTickitFn();">Share</button> ');
