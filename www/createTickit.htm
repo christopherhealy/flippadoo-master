@@ -48,16 +48,16 @@ function getLocation() {
 }
 
 function onLocationSuccess(loc) {
-    if (TestAlert == true) {
-        alert("onLocationSuccess");
-    }
+    
+    alert("onLocationSuccess");    
     //We received something from the API, so first get the
     // timestamp in a date object so we can work with it
     var d = new Date(loc.timestamp);
     //Then replace the page's content with the current
     // location retrieved from the API
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
-    container.innerHTML = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
+    var HTMLStr = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
+    alert("HTML String is: " + HTMLStr);
     window.sessionStorage.setItem("gpsLocation", gpsLocation);
     var s = container.getElementById(idStartDate);
     s.value = d.toLocaleString();
@@ -96,8 +96,7 @@ function onLocationError(e) {
           
              <div class="buttonBlock">
                 <button onclick="creatTickitFn();">Whami</button>
-                <button name="Location" onclick="GetLocationForm();">Location</button>
-                 <input type="button" value="Whami!" onclick="getLocation();">
+                <input type="button" value="Location" onclick="getLocation();">
             </div>                  
     </form>
          
