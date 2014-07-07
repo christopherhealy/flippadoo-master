@@ -8,8 +8,9 @@
 <script src="createTickit_files/jquery_002.js"></script>
 <script src="createTickit_files/tickit.js"></script>
 <script>
-function creatTickitFn(){
-	var apiKey = $('#apiKey').val();
+    
+function creatTickitFn() {
+    var apiKey = $('#apiKey').val();
 	var url = 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/'+apiKey+'/createTickit';
  	$("#createTickit").attr("action",url);
 	$("#createTickit").submit();
@@ -32,11 +33,41 @@ function GetLocationForm() {
     alert("Redirect to the form");
     loadPage('GetLocation.html');
 }
+
+function getLocation() {
+           
+        var locOptions = {
+            timeout: 5000,
+            enableHighAccuracy: true
+        };
+        //get the current location
+        navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
+        //Clear the current location while we wait for a reading
+        
+
+}
+
+function onLocationSuccess(loc) {
+    if (TestAlert == true) {
+        alert("onLocationSuccess");
+    }
+    //We received something from the API, so first get the
+    // timestamp in a date object so we can work with it
+    var d = new Date(loc.timestamp);
+    //Then replace the page's content with the current
+    // location retrieved from the API
+    var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
+}
+
+function onLocationError(e) {
+    alert("Geolocation error: #" + e.code + "\n" + e.message);
+}
+
 </script>
     
 </head>
 
-<body>
+<body onload="getLocation();">
     <div id='container'>
     <div class="wrapper">    
         <div class="formContainer">
@@ -48,10 +79,13 @@ function GetLocationForm() {
                     <input name="tickitType" value="11" type="hidden">               
                     <input value="ChrisHealy@test.com" name="recipient" type="text">
                     <input value="Whami Location" name="subject" type="text">
-                    <input value="Location" name="msgBody" type="hidden">
                     <input value="" name="startDate" type="hidden">
                     <input value="" name="endDate" type="hidden">
-                    <input value="" name="gps" type="hidden">
+                    <input value="Location" name="msgBody" type="hidden">
+                    <script type="text/javascript">
+                        document.write('<input value="' + gpsLocation +'" name="gps" type="hidden">');
+                    </script>
+                    
                     <input value="" name="tickitFile" type="hidden">
           
              <div class="buttonBlock">
