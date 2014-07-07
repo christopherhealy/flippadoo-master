@@ -8,8 +8,7 @@
 <script src="createTickit_files/jquery_002.js"></script>
 <script src="createTickit_files/tickit.js"></script>
 <script>
-function creatTickitFn()
-{
+function creatTickitFn(){
 	var apiKey = $('#apiKey').val();
 	var url = 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/'+apiKey+'/createTickit';
  	$("#createTickit").attr("action",url);
@@ -19,14 +18,16 @@ function creatTickitFn()
 </head>
 
 <body>
+    <div class="wrapper">
+    <div class="formContainer">
         <form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">              
                     <input name="ownerId" value="1" type="hidden">
   		            <input name="apiKey" id="apiKey" value="355901361" type="hidden">
                     <input name="ip" value="http://192.168.1.240:8080" type="hidden">               
                     <input name="tickitStatus" value="1" type="hidden">
                     <input name="tickitType" value="11" type="hidden">               
-                    <input value="ChrisHealy@test.com" name="recipient" type="hidden">
-                    <input value="Whami Location" name="subject" required="required" type="hidden">
+                    <input value="ChrisHealy@test.com" name="recipient" type="text">
+                    <input value="Whami Location" name="subject" type="text">
                     <input value="Location" name="msgBody" type="hidden">
                     <input value="" name="startDate" type="hidden">
                     <input value="" name="endDate" type="hidden">
@@ -35,7 +36,9 @@ function creatTickitFn()
           
              <div class="buttonBlock">
                 <button class="submitBTN" onclick="creatTickitFn();">Whami</button>
-            </div>        
+            </div>                  
     </form>
+     </div>  
+    </div>  
 </body>
 </html>
