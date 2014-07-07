@@ -41,7 +41,7 @@ function getLocation() {
         navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
     //Clear the current location while we wait for a reading
         localStorage.setItem("APIKey", "666777888");
-        alert("The API value is: " +localStorage.getItem("APIKey"));
+        
         
 
 }
@@ -118,6 +118,6 @@ function onLocationError(e) {
 
 <body onload="getLocation();">
    <!-- the form will load here -->
-     
+     alert("The API value is: " +localStorage.getItem("APIKey"));
 </body>
 </html>
