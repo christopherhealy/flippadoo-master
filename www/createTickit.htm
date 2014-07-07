@@ -7,6 +7,29 @@
 <script src="createTickit_files/jquery.js"></script>
 <script src="createTickit_files/jquery_002.js"></script>
 <script src="createTickit_files/tickit.js"></script>
+
+<style type="text/css">
+input#bigbutton { 
+width:500px;
+font-size:1.5em;
+font-family:Oswald, serif;
+letter-spacing:.1em;
+background: #3e9cbf; 
+margin:20px 10px; 
+padding: 8px 14px 10px; 
+color: #fff;
+text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.3); /*doesn't work in Opera*/
+-webkit-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;
+-moz-box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;
+box-shadow: inset 0px 1px 0px #3e9cbf, 0px 5px 0px 0px #205c73, 0px 10px 5px #999;
+border:1px solid #3e9cbf;
+-moz-border-radius: 10px; 
+-webkit-border-radius: 10px;
+border-radius: 10px;
+cursor:pointer;
+}
+
+</style>
 <script>
     
 function creatTickitFn() {
@@ -39,39 +62,10 @@ function getLocation() {
         
         //get the current location
         navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
-    //Clear the current location while we wait for a reading
-        localStorage.setItem("APIKey", "666777888");
+          
         
-        
-
 }
 
-function CreateFormTop() {
-    var TickitForm ='<div id="container">';
-    TickitForm = TickitForm + '<div class="wrapper">  '; 
-    TickitForm = TickitForm + '<div class="formContainer">';
-    TickitForm = TickitForm + '<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ';            
-    TickitForm = TickitForm + '<input name="ownerId" value="1" type="hidden">';
-    TickitForm = TickitForm + '<input name="apiKey" id="apiKey" value="355901361" type="hidden">';
-    TickitForm = TickitForm + '<input name="ip" value="http://192.168.1.240:8080" type="hidden">     ';          
-    TickitForm = TickitForm + '<input name="tickitStatus" value="1" type="hidden">';
-    TickitForm = TickitForm + '<input name="tickitType" value="11" type="hidden">   ';            
-    TickitForm = TickitForm + '<input value="ChrisHealy@test.com" name="recipient" type="text">';
-    TickitForm = TickitForm + '<input value="Whami Location" name="subject" type="text">';
-    TickitForm = TickitForm + '<input value="" id="idStartDate" name="startDate" type="text">';
-    TickitForm = TickitForm + '<input value="" name="endDate" type="hidden">';    
-    document.write(TickitForm);
-}
-
-function CreateFormBottom() {
-    var TickitForm = '';
-    TickitForm = TickitForm + '<input value="" name="tickitFile" type="hidden"> ';
-    TickitForm = TickitForm + '<div class="buttonBlock"> ';
-    TickitForm = TickitForm + '<button onclick="creatTickitFn();">Whami</button> ';
-    TickitForm = TickitForm + '<input type="button" value="Location" onclick="getLocation();"> ';
-    TickitForm = TickitForm + '</div> </form></div></div></div>';
-    document.write(TickitForm);
-}
 function onLocationSuccess(loc) {
     
     //alert("onLocationSuccess");    
@@ -87,24 +81,21 @@ function onLocationSuccess(loc) {
         + loc.coords.altitudeAccuracy + 'Heading\n: ' + loc.coords.heading + 'Speed\n: '
         + loc.coords.speed + 'Timestamp\n: ' + d.toLocaleString();
 
-    alert("The IP Address is: " + localStorage.getItem("IP_Addr"));
+    //alert("The IP Address is: " + localStorage.getItem("IP_Addr"));
     
     document.write('<br><h1>Tickit Form 3 </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
-    document.write('Owner ID:      <input name="ownerId" value="1" type="hidden">');
-    document.write('<input name="apiKey" id="apiKey" value="333234567" type="hidden">');
-    document.write('<input name="ip" value="http://192.168.1.240:8080" type="hidden">    ');
-    document.write('<input name="tickitStatus" value="1" type="hidden">');
+    document.write('<input name="ownerId" value="1" type="hidden">');
+    document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="hidden">');
+    document.write('<input name="ip" value="' + localStorage.getItem("IP_Addr") +'" type="hidden">');
+    document.write('<input name="tickitStatus" value="7" type="hidden">');
     document.write('<input name="tickitType" value="11" type="hidden">   ');
-    document.write('Recipient:     <input value="ChrisHealy@test.com" name="recipient" type="hidden">');
-    document.write('Subject:       <input value="Whami Location" name="subject" type="hidden">');
-    document.write('Start:         <input value="" name="startDate" type="hidden">');
-    document.write('<input value="" name="endDate" type="hidden">');
-    document.write('GPS:           <input value="' + gpsLocation + '" name="gps" type="hidden"><br>');
+    document.write('<input value="ChrisHealy@test.com" name="recipient" type="hidden">');
+    document.write('<input value="Whami Location" name="subject" type="hidden">');
+    document.write('<input value="' + gpsLocation + '" name="gps" type="hidden"><br>');
     document.write('<input value="' + gpsAltitude + '" name="msgBody" type="hidden">');
-    document.write('<input value="" name="tickitFile" type="hidden">');
     document.write('<div> <br><br>');
-    document.write('<button id="submitbutton" onclick="creatTickitFn();">Share</button> ');
+    document.write('<button class="bigbutton" onclick="creatTickitFn();">Share</button> ');
     //document.write('<input type="button" value="Location" onclick="getLocation();">');
     document.write('</div> </form></div>');
    
