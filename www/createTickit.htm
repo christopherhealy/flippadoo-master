@@ -14,18 +14,32 @@ function creatTickitFn(){
  	$("#createTickit").attr("action",url);
 	$("#createTickit").submit();
 }
-
+function loadPage(url) {
+    var xmlhttp = new XMLHttpRequest();
+    alert("Page request for " + url);
+    // Callback function when XMLHttpRequest is ready
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4) {
+            if (xmlhttp.status === 200) {
+                document.getElementById('container').innerHTML = xmlhttp.responseText;
+            }
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
 function GetLocationForm() {
     alert("Redirect to the form");
-    location.href = "GetLocation.html";
+    loadPage('GetLocation.html');
 }
 </script>
     
 </head>
 
 <body>
-    <div class="wrapper">
-    <div class="formContainer">
+    <div id='container'>
+    <div class="wrapper">    
+        <div class="formContainer">
         <form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">              
                     <input name="ownerId" value="1" type="hidden">
   		            <input name="apiKey" id="apiKey" value="355901361" type="hidden">
@@ -42,10 +56,12 @@ function GetLocationForm() {
           
              <div class="buttonBlock">
                 <button onclick="creatTickitFn();">Whami</button>
+                <button name="Location" onclick="GetLocationForm();">Location</button>
             </div>                  
     </form>
-         <button name="Location" onclick="GetLocationForm();">Location</button>
+         
      </div>  
     </div>  
+  </div>
 </body>
 </html>

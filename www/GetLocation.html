@@ -1,88 +1,136 @@
-﻿<script type="text/javascript">
-    //Location content
-    var lc;
-    //PhoneGap Ready variable
-    var pgr = false;
-    var TestAlert = false;
+﻿
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Whami Test</title>
+    <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0, maximum-scale=1.0, user-scalable=no;" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+    <script type="text/javascript">
+        //Location content
+        var lc;
+        //PhoneGap Ready variable
+        var pgr = false;
+        var TestAlert = false;
 
-    function onBodyLoad() {
-        //During testing, Let me know we got this far
-        if (TestAlert == true) {
-            alert("onBodyLoad");
-        }
-        //Add the PhoneGap deviceready event listener
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
+        function loadPage(url) {
+            var xmlhttp = new XMLHttpRequest();
 
-    function onDeviceReady() {
-        //During testing, Let me know PhoneGap actually
-        // initialized
-        if (TestAlert == true) {
-            alert("onDeviceReady");
-        }
-        //Get a handle we'll use to adjust the accelerometer
-        //content
-        lc = document.getElementById("locationInfo");
-        //Set the variable that lets other parts of the program
-        //know that PhoneGap is initialized
-        pgr = true;
-    }
-
-    function getLocation() {
-        if (TestAlert == true) {
-            alert("getLocation");
-        }
-        if (pgr == true) {
-            var locOptions = {
-                timeout: 5000,
-                enableHighAccuracy: true
+            // Callback function when XMLHttpRequest is ready
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState === 4) {
+                    if (xmlhttp.status === 200) {
+                        document.getElementById('container').innerHTML = xmlhttp.responseText;
+                    }
+                }
             };
-            //get the current location
-            navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
-            //Clear the current location while we wait for a reading
-            lc.innerHTML = "Reading location...";
-
-        } else {
-            alert("Please wait,\nPhoneGap is not ready.");
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
         }
-    }
-
-    function onLocationSuccess(loc) {
-        if (TestAlert == true) {
-            alert("onLocationSuccess");
+        function onBodyLoad() {
+            //During testing, Let me know we got this far
+            if (TestAlert == true) {
+                alert("onBodyLoad");
+            }
+            //Add the PhoneGap deviceready event listener
+            document.addEventListener("deviceready", onDeviceReady, false);
         }
-        //We received something from the API, so first get the
-        // timestamp in a date object so we can work with it
-        var d = new Date(loc.timestamp);
-        //Then replace the page's content with the current
-        // location retrieved from the API
-        lc.innerHTML = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
-    }
 
-    function onLocationError(e) {
-        alert("Geolocation error: #" + e.code + "\n" + e.message);
-    }
+        function onDeviceReady() {
+            //During testing, Let me know PhoneGap actually
+            // initialized
+            if (TestAlert == true) {
+                alert("onDeviceReady");
+            }
+            //Get a handle we'll use to adjust the accelerometer
+            //content
+            lc = document.getElementById("locationInfo");
+            //Set the variable that lets other parts of the program
+            //know that PhoneGap is initialized
+            pgr = true;
+        }
 
-    function takePhoto() {
-        alert("takePhoto");
-        navigator.camera.getPicture(onCameraSuccess, onCameraError, {
-            quality: 50,
-            destinationType: Camera.DestinationType.FILE_URI
-        });
-        // navigator.camera.getPicture(onCameraSuccess, onCameraError);
-    }
+        function getLocation() {
+            if (TestAlert == true) {
+                alert("getLocation");
+            }
+            if (pgr == true) {
+                var locOptions = {
+                    timeout: 5000,
+                    enableHighAccuracy: true
+                };
+                //get the current location
+                navigator.geolocation.getCurrentPosition(onLocationSuccess, onLocationError, locOptions);
+                //Clear the current location while we wait for a reading
+                lc.innerHTML = "Reading location...";
 
-    function onCameraSuccess(imageURL) {
-        navigator.notification.alert("onCameraSuccess: " + imageURL);
-        //Get a handle to the image container div
-        ic = document.getElementById('imageContainer');
-        //Then write an image tag out to the div using the
-        //URL we received from the camera application. 
-        ic.innerHTML = '<img src="' + imageURL + '" width="50%" />';
-    }
+            } else {
+                alert("Please wait,\nPhoneGap is not ready.");
+            }
+        }
 
-    function onCameraError(e) {
-        console.log(e);
-        navigator.notification.alert("onCameraError: " + e);
-    }
-    </script>
+        function onLocationSuccess(loc) {
+            if (TestAlert == true) {
+                alert("onLocationSuccess");
+            }
+            //We received something from the API, so first get the
+            // timestamp in a date object so we can work with it
+            var d = new Date(loc.timestamp);
+            //Then replace the page's content with the current
+            // location retrieved from the API
+            lc.innerHTML = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
+        }
+
+        function onLocationError(e) {
+            alert("Geolocation error: #" + e.code + "\n" + e.message);
+        }
+
+        function takePhoto() {
+            alert("takePhoto");
+            navigator.camera.getPicture(onCameraSuccess, onCameraError, {
+                quality: 50,
+                destinationType: Camera.DestinationType.FILE_URI
+            });
+            // navigator.camera.getPicture(onCameraSuccess, onCameraError);
+        }
+
+        function onCameraSuccess(imageURL) {
+            navigator.notification.alert("onCameraSuccess: " + imageURL);
+            //Get a handle to the image container div
+            ic = document.getElementById('imageContainer');
+            //Then write an image tag out to the div using the
+            //URL we received from the camera application. 
+            ic.innerHTML = '<img src="' + imageURL + '" width="50%" />';
+        }
+
+        function onCameraError(e) {
+            console.log(e);
+            navigator.notification.alert("onCameraError: " + e);
+        }
+
+        function GetLocationForm() {
+            alert("Redirect to the form");
+            loadPage('createTickit.htm');
+        }
+</script>
+
+  </head>
+  <body>
+    <div id='container'>
+    <h1>Flippadoo Test</h1>
+    <p>
+      Test location and the camera....
+    </p>
+    <input type="button" value="Whami!" onclick="getLocation();">
+    <input type="button" value="Click for pic" onclick="takePhoto();">
+    <input type="button" value="Whami form" onclick="GetLocationForm();">
+   
+    <hr />
+    <p id="locationInfo">
+      
+      <br />
+      
+    </p>
+    </div>
+  </body>
+</html>
