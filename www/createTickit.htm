@@ -62,7 +62,7 @@ function getLocation() {
 
 function onLocationSuccess(loc) {
     
-    alert("onLocationSuccess");    
+    //alert("onLocationSuccess");    
     //We received something from the API, so first get the
     // timestamp in a date object so we can work with it
     var d = new Date(loc.timestamp);
@@ -71,10 +71,11 @@ function onLocationSuccess(loc) {
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
     var HTMLStr = '<b>Current Location</b><hr /><b>Latitude</b>: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
     alert("HTML String is: " + HTMLStr);
-    window.sessionStorage.setItem("gpsLocation", gpsLocation);
-    var s = document.getElementById(idStartDate);
-    s.value = d.toLocaleString();
-    alert("Location is" + gpsLocation);
+    window.localStorage.setItem("GPSData", HTMLStr);
+    window.localStorage.setItem("GPSKey", gpsLocation);
+    alert("GPS short String is: " + gpsLocation);
+    document.write('Here it is <br><input value="' + gpsLocation + '" name="gps" type="text">');                                  
+   
 }
 
 function onLocationError(e) {
@@ -99,12 +100,14 @@ function onLocationError(e) {
                     <input value="Whami Location" name="subject" type="text">
                     <input value="" id="idStartDate" name="startDate" type="text">
                     <input value="" name="endDate" type="hidden">
-                    <input value="Location" name="msgBody" type="hidden">
+                    <script type="text/javascript">
+                        var GPSData = window.localStorage.getItem("GpsData");
+                        document.write('<input value="' + GPSData + '" name="msgBody" type="text">');
+                    </script>
                     <script type="text/javascript">
                         var GPSvalue = window.localStorage.getItem("GpsKey");
-                        document.write('<input value="' + GPSvalue + '" name="gps" type="text">');
-                    </script>
-                    
+                        //document.write('<input value="' + GPSvalue + '" name="gps" type="text">');
+                    </script>                    
                     <input value="" name="tickitFile" type="hidden">
           
              <div class="buttonBlock">

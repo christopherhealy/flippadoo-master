@@ -35,6 +35,8 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         window.location = 'createTickit.htm';
+        window.localStorage.setItem("GpsKey", "");
+        window.localStorage.setItem("GpsData", "");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
