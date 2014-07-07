@@ -80,11 +80,29 @@ function onLocationSuccess(loc) {
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
     var HTMLStr = 'Current Location\nLatitude: ' + loc.coords.latitude + '<br /><b>Longitude</b>: ' + loc.coords.longitude + '<br /><b>Altitude</b>: ' + loc.coords.altitude + '<br /><b>Accuracy</b>: ' + loc.coords.accuracy + '<br /><b>Altitude Accuracy</b>: ' + loc.coords.altitudeAccuracy + '<br /><b>Heading</b>: ' + loc.coords.heading + '<br /><b>Speed</b>: ' + loc.coords.speed + '<br /><b>Timestamp</b>: ' + d.toLocaleString();
     
-    CreateFormTop();
+    var TickitForm = '<br><h1>Tickit Form </h1><br><div id="container">';
+    TickitForm = TickitForm + '<div class="wrapper">  ';
+    TickitForm = TickitForm + '<div class="formContainer">';
+    TickitForm = TickitForm + '<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ';
+    TickitForm = TickitForm + '<input name="ownerId" value="1" type="hidden">';
+    TickitForm = TickitForm + '<input name="apiKey" id="apiKey" value="355901361" type="hidden">';
+    TickitForm = TickitForm + '<input name="ip" value="http://192.168.1.240:8080" type="hidden">     ';
+    TickitForm = TickitForm + '<input name="tickitStatus" value="1" type="hidden">';
+    TickitForm = TickitForm + '<input name="tickitType" value="11" type="hidden">   ';
+    TickitForm = TickitForm + '<input value="ChrisHealy@test.com" name="recipient" type="text">';
+    TickitForm = TickitForm + '<input value="Whami Location" name="subject" type="text">';
+    TickitForm = TickitForm + '<input value="" id="idStartDate" name="startDate" type="text">';
+    TickitForm = TickitForm + '<input value="" name="endDate" type="hidden">';
+    document.write(TickitForm);
     document.write('<input value="' + gpsLocation + '" name="gps" type="text">');
-    document.write('<input value="' + HTMLstr + '" name="msgBody" type="text">');
-    CreateFormBottom();
-   
+    document.write('<input value="' + HTMLstr + '" name="msgBody" type="hidden">');
+    TickitForm = '';
+    TickitForm = TickitForm + '<input value="" name="tickitFile" type="hidden"> ';
+    TickitForm = TickitForm + '<div class="buttonBlock"> ';
+    TickitForm = TickitForm + '<button onclick="creatTickitFn();">Whami</button> ';
+    TickitForm = TickitForm + '<input type="button" value="Location" onclick="getLocation();"> ';
+    TickitForm = TickitForm + '</div> </form></div></div></div>';
+    document.write(TickitForm);
 }
 
 function onLocationError(e) {
