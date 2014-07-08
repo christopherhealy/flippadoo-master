@@ -36,7 +36,7 @@ var app = {
         app.receivedEvent('deviceready');
         window.location = 'createTickit.htm';
         localStorage.setItem("IP_Addr", "100.100.100.101");
-        localStorage.setItem("API_Key", "333234567");
+        localStorage.setItem("API_Key", "355901361");
         // 355901361 is associated with ownerID = 1
         // 333234567 is associated with ownerid = 6
     },
