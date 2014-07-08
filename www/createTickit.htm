@@ -31,6 +31,51 @@ cursor:pointer;
 
 </style>
 <script>
+
+    function ajaxSubmitCreateTickit() {
+        var dateMilliseconds = new Date().getTime();
+        var tickitSubject = $('#tickitSubject').val();
+
+
+        $('#createTickit').ajaxForm({
+            url: 'createTickit',
+            type: 'post',
+            async: true,
+            cache: false,
+            data: {
+                dateMilliseconds: dateMilliseconds
+
+            },
+            beforeSubmit: function () { },
+            success: function (response) {
+
+                $('#tickitAttachment').attr('disabled', false);
+                if (response.status == 'OK') {
+                    alert("Tikit is created.");
+                }
+                else {
+                    alert("FAILED, Try again ...");
+                }
+
+            },
+            error: function () { alert('System error occured, please try again ...'); $('#tickitAttachment').attr('disabled', false); }
+
+        });
+
+
+        if ($('#tickitAttachment').val() == '') {
+            $('#tickitAttachment').attr('disabled', true);
+        }
+        if (tickitSubject == "") {
+            alert("Please fill subject of Tickit");
+        }
+        else {
+            $('#createTickit').submit();
+        }
+
+
+    }
+</script>
     
 function creatTickitFn() {
     var apiKey = $('#apiKey').val();
@@ -107,7 +152,7 @@ function onLocationSuccess(loc) {
     document.write('<input type="hidden" name="tickitFile" value="">');
     document.write('<div> <br><br>');
     document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="creatTickitFn();">Share</button> ');
-    //document.write('<button ' + ButtonStyle +' onclick="creatTickitFn();">Share</button> ');
+    //document.write('<button ' + ButtonStyle +' onclick="ajaxSubmitCreateTickit();">Share</button> ');
     //document.write('<input type="button" value="Location" onclick="getLocation();">');
     document.write('</div> </form></div></center>');
    
