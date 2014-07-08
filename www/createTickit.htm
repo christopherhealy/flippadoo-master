@@ -37,7 +37,7 @@ cursor:pointer;
         var tickitSubject = $('#tickitSubject').val();
         alert("Trying Ajax...");
 
-        $('#createTickit').ajaxForm({
+        $('#createTickit').ajaxSubmit({
             url: 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/createTickit',
             crossDomain: true,
             type: 'post',
@@ -62,7 +62,7 @@ cursor:pointer;
 
             },
             error: function () { alert('System error occured, please try again ...'); $('#tickitAttachment').attr('disabled', false); }
-
+           
         });
 
 
@@ -123,7 +123,7 @@ function onLocationSuccess(loc) {
     var d = new Date(loc.timestamp);
     //Then replace the page's content with the current
     // location retrieved from the API
-    var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
+    var gpsLocation = loc.coords.latitude + ',' + loc.coords.longitude;
     //var gpsAltitude = 'Altitude: ' + loc.coords.altitude + ': accuracy' + loc.coords.altitudeAccuracy;
     var gpsAltitude = 'Altitude: ' + loc.coords.altitude;
     var CurDateTime = d.toLocaleString();
@@ -154,7 +154,7 @@ function onLocationSuccess(loc) {
     document.write('<input type="hidden" name="endDate" value="">');
     document.write('<input type="hidden" name="tickitFile" value="">');
     document.write('<div> <br><br>');
-    document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="creatTickitFn();">Share</button> ');
+    document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="ajaxSubmitCreateTickit()">Share</button> ');
     document.write('</div> </form></div></center>');
    
 }
