@@ -87,11 +87,11 @@ function onLocationSuccess(loc) {
     
     document.write('<center><br><h1>Where Am I? </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
-    //document.write('<input name="ownerId" value="1" type="hidden">');
-    document.write('<input name="ownerId" value="'+ localStorage.getItem("OwnerID") +'" type="text"><br>');
-    document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="text"><br>');
+    document.write('<input name="ownerId" value="6" type="hidden">');
+    //document.write('<input name="ownerId" value="'+ localStorage.getItem("OwnerID") +'" type="text"><br>');
+    document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="hidden">');
     //document.write('<input name="apiKey" id="apiKey" value="355901361" type="text"><br>');
-    document.write('<input name="ip" value="' + localStorage.getItem("IP_Addr") +'" type="text"><br>');
+    document.write('<input name="ip" value="' + localStorage.getItem("IP_Addr") +'" type="hidden">');
     //document.write('<input name="ip" value="http://192.168.1.240:8080" type="text"><br>');
     document.write('<input name="tickitStatus" value="7" type="hidden">');
     document.write('<input name="tickitType" value="11" type="hidden">   ');
