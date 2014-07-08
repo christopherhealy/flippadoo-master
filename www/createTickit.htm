@@ -36,7 +36,8 @@ function creatTickitFn() {
     var apiKey = $('#apiKey').val();
 	var url = 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/'+apiKey+'/createTickit';
  	$("#createTickit").attr("action",url);
-	$("#createTickit").submit();
+ 	$("#createTickit").submit();
+ 	navigator.app.exitApp();
 }
 function loadPage(url) {
     var xmlhttp = new XMLHttpRequest();
