@@ -34,10 +34,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        window.location = 'AutoGPS.htm';
+        window.location = 'createTickit.htm';
         localStorage.setItem("IP_Addr", "http://192.168.1.240:8080");
         localStorage.setItem("API_Key", "333234567");
-        localStorage.setItem("OwnerID", "6");
+        localStorage.setItem("OwnerI", "6");
         // 355901361 is associated with ownerID = 1
         // 333234567 is associated with ownerid = 6
     },
