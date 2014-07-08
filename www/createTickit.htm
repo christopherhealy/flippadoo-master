@@ -52,6 +52,8 @@ cursor:pointer;
                 $('#tickitAttachment').attr('disabled', false);
                 if (response.status == 'OK') {
                     alert("Tikit is created.");
+                    //navigator.app.exitApp();
+                    //return;
                 }
                 else {
                     alert("FAILED, Try again ...");
@@ -75,14 +77,14 @@ cursor:pointer;
 
 
     }
-</script>
+
     
 function creatTickitFn() {
     var apiKey = $('#apiKey').val();
 	var url = 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/'+apiKey+'/createTickit';
  	$("#createTickit").attr("action",url);
  	$("#createTickit").submit();
- 	navigator.app.exitApp();
+ 	
 }
 function loadPage(url) {
     var xmlhttp = new XMLHttpRequest();
