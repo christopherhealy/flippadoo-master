@@ -88,7 +88,7 @@ function onLocationSuccess(loc) {
     document.write('<center><br><h1>Where Am I? </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
     //document.write('<input name="ownerId" value="1" type="hidden">');
-    document.write('<input name="ownerId" value="' + localStorage.getItem("OwnerID") + '" type="text"><br>');
+    document.write('<input name="ownerId" value="'+ localStorage.getItem("OwnerID") +'" type="text"><br>');
     document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="text"><br>');
     //document.write('<input name="apiKey" id="apiKey" value="355901361" type="text"><br>');
     document.write('<input name="ip" value="' + localStorage.getItem("IP_Addr") +'" type="text"><br>');
@@ -104,7 +104,7 @@ function onLocationSuccess(loc) {
     document.write('<input type="hidden" name="endDate" value="">');
     document.write('<input type="hidden" name="tickitFile" value="">');
     document.write('<div> <br><br>');
-    document.write('<button style="width:250px;height:250px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="creatTickitFn();">Share</button> ');
+    document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="creatTickitFn();">Share</button> ');
     //document.write('<button ' + ButtonStyle +' onclick="creatTickitFn();">Share</button> ');
     //document.write('<input type="button" value="Location" onclick="getLocation();">');
     document.write('</div> </form></div></center>');
