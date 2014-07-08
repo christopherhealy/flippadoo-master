@@ -75,7 +75,8 @@ function onLocationSuccess(loc) {
     //Then replace the page's content with the current
     // location retrieved from the API
     var gpsLocation = loc.coords.latitude + ';' + loc.coords.longitude;
-    var gpsAltitude = 'Altitude: ' + loc.coords.altitude + ': accuracy' + loc.coords.altitudeAccuracy;
+    //var gpsAltitude = 'Altitude: ' + loc.coords.altitude + ': accuracy' + loc.coords.altitudeAccuracy;
+    var gpsAltitude = 'Altitude: ' + loc.coords.altitude;
     var CurDateTime = d.toLocaleString();
     var HTMLStr = 'Altitude\n: ' + loc.coords.altitude + 'Accuracy\n: ' + loc.coords.accuracy + 'Altitude Accuracy\n: '
         + loc.coords.altitudeAccuracy + 'Heading\n: ' + loc.coords.heading + 'Speed\n: '
@@ -84,7 +85,7 @@ function onLocationSuccess(loc) {
     //alert("The IP Address is: " + localStorage.getItem("IP_Addr"));
     var ButtonStyle = 'style="width:250px;height:250px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;';
     
-    document.write('<center><br><h1>Tickit Form 3 </h1><br><div id="container">');
+    document.write('<center><br><h1>Tickit Form 4 </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
     document.write('<input name="ownerId" value="1" type="hidden">');
     //document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="hidden">');
@@ -94,7 +95,7 @@ function onLocationSuccess(loc) {
     document.write('<input name="tickitStatus" value="7" type="hidden">');
     document.write('<input name="tickitType" value="11" type="hidden">   ');
     document.write('<input value="ChrisHealy@test.com" name="recipient" type="hidden">');
-    document.write('<input type="hidden" name="parentId" value="">');
+    document.write('<input type="hidden" name="parentId" value="123456804">');
     document.write('<input value="Whami Location" name="subject" type="hidden">');
     document.write('<input value="' + gpsLocation + '" name="gps" type="text"><br>');
     document.write('<input value="' + gpsAltitude + '" name="msgBody" type="text">');
