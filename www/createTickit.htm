@@ -78,7 +78,7 @@ cursor:pointer;
 
 
     }
-/*    
+    
 function creatTickitFn() {
     var apiKey = $('#apiKey').val();
 	var url = 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/'+apiKey+'/createTickit';
@@ -86,7 +86,7 @@ function creatTickitFn() {
  	$("#createTickit").submit();
  	
 }
-*/
+
 function loadPage(url) {
     var xmlhttp = new XMLHttpRequest();
     alert("Page request for " + url);
@@ -154,7 +154,7 @@ function onLocationSuccess(loc) {
     document.write('<input type="hidden" name="endDate" value="">');
     document.write('<input type="hidden" name="tickitFile" value="">');
     document.write('<div> <br><br>');
-    document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="ajaxSubmitCreateTickit();">Share</button> ');
+    document.write('<button style="width:255px;height:255px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;"  onclick="creatTickitFn();">Share</button> ');
     document.write('</div> </form></div></center>');
    
 }
