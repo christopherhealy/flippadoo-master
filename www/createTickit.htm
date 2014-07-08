@@ -85,10 +85,10 @@ function onLocationSuccess(loc) {
     //alert("The IP Address is: " + localStorage.getItem("IP_Addr"));
     var ButtonStyle = 'style="width:250px;height:250px;background: #3e9cbf;border:1px solid #3e9cbf;border-radius: 10px;font-size:3.5em;';
     
-    document.write('<center><br><h1>Tickit Form 4 </h1><br><div id="container">');
+    document.write('<center><br><h1>Where Am I? </h1><br><div id="container">');
     document.write('<form name="createTickit" id="createTickit" action="/flippadoo/mobile/tickitService/createTickit" enctype="multipart/form-data" method="post">  ');
-    document.write('<input name="ownerId" value="1" type="hidden">');
-    //document.write('<input name="ownerId" value="' + localStorage.getItem("OwnerID") + '" type="hidden">');
+    //document.write('<input name="ownerId" value="1" type="hidden">');
+    document.write('<input name="ownerId" value="' + localStorage.getItem("OwnerID") + '" type="hidden">');
     document.write('<input name="apiKey" id="apiKey" value="' + localStorage.getItem("API_Key") + '" type="hidden">');
     //document.write('<input name="apiKey" id="apiKey" value="355901361" type="text"><br>');
     document.write('<input name="ip" value="' + localStorage.getItem("IP_Addr") +'" type="hidden">');
@@ -98,8 +98,8 @@ function onLocationSuccess(loc) {
     document.write('<input value="ChrisHealy@test.com" name="recipient" type="hidden">');
     document.write('<input type="hidden" name="parentId" value="123456804">');
     document.write('<input value="Whami Location" name="subject" type="hidden">');
-    document.write('<input value="' + gpsLocation + '" name="gps" type="text"><br>');
-    document.write('<input value="' + gpsAltitude + '" name="msgBody" type="text">');
+    document.write('<input value="' + gpsLocation + '" name="gps" type="hidden">');
+    document.write('<input value="' + gpsAltitude + '" name="msgBody" type="hidden">');
     document.write('<input type="hidden" name="startDate" value="">');
     document.write('<input type="hidden" name="endDate" value="">');
     document.write('<input type="hidden" name="tickitFile" value="">');
