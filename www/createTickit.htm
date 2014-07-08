@@ -39,12 +39,13 @@ cursor:pointer;
 
         $('#createTickit').ajaxForm({
             url: 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/createTickit',
+            crossDomain: true,
             type: 'post',
             async: true,
             cache: false,
             data: {
                 dateMilliseconds: dateMilliseconds
-
+                
             },
             beforeSubmit: function () { },
             success: function (response) {
