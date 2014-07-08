@@ -35,7 +35,7 @@ cursor:pointer;
     function ajaxSubmitCreateTickit() {
         var dateMilliseconds = new Date().getTime();
         var tickitSubject = $('#tickitSubject').val();
-
+        alert("Trying Ajax...");
 
         $('#createTickit').ajaxForm({
             url: 'http://dev.tickittaskit.com/flippadoo/mobile/tickitService/createTickit',
